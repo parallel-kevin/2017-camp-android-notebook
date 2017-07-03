@@ -1,11 +1,9 @@
 package camp.baixing.com.camp_android_notebook;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listView = (ListView) findViewById(R.id.activity_main_listview);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.activity_main_listview);
 
         final List<String> data = Arrays.asList(
                 "香港各界对习近平重要讲话反响热烈",
@@ -28,14 +26,8 @@ public class MainActivity extends AppCompatActivity {
         );
 
         NotebookAdapter adapter = new NotebookAdapter(this, data);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, NoteEditorActivity.class);
-                intent.putExtra(NoteEditorActivity.EXTRA_CONTENT, data.get(position));
-                startActivity(intent);
-            }
-        });
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 }
