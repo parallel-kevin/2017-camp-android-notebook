@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">camp-android-notebook</string>
+
+    <string name="edit_hint">来写点东西</string>
 </resources>
