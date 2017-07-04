@@ -16,11 +16,13 @@ import camp.baixing.com.camp_android_notebook.NoteEditorActivity;
 
 public class NotebookAdapter extends RecyclerView.Adapter<NoteItemViewHolder> {
 
+    private List<String> title;
     private List<String> data;
     private Context context;
 
-    public NotebookAdapter(Context context, List<String> data) {
+    public NotebookAdapter(Context context, List<String> title, List<String> data) {
         this.context = context;
+        this.title = title;
         this.data = data;
     }
 
@@ -31,7 +33,7 @@ public class NotebookAdapter extends RecyclerView.Adapter<NoteItemViewHolder> {
 
     @Override
     public int getItemCount() {
-        return data == null ? 0 : data.size();
+        return title == null ? 0 : title.size();
     }
 
     @Override
@@ -41,13 +43,14 @@ public class NotebookAdapter extends RecyclerView.Adapter<NoteItemViewHolder> {
 
     @Override
     public void onBindViewHolder(final NoteItemViewHolder holder, int position) {
-        if (holder != null && data != null) {
-            holder.setText(data.get(position));
+        if (holder != null && title != null) {
+            holder.setText(title.get(position));
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, NoteEditorActivity.class);
+                    intent.putExtra(NoteEditorActivity.EXTRA_TITLE, title.get(holder.getAdapterPosition()));
                     intent.putExtra(NoteEditorActivity.EXTRA_CONTENT, data.get(holder.getAdapterPosition()));
                     context.startActivity(intent);
                 }

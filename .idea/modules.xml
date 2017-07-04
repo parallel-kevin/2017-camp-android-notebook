@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/2017-camp-android-notebook.iml" filepath="$PROJECT_DIR$/2017-camp-android-notebook.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/camp-android-notebook.iml" filepath="$PROJECT_DIR$/camp-android-notebook.iml" />
     </modules>
